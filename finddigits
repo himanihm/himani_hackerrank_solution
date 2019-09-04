@@ -1,0 +1,48 @@
+include <bits/stdc++.h>
+
+using namespace std;
+
+// Complete the findDigits function below.
+int findDigits(int n) {
+    int dig,diff,ctr=0;
+    int orig=n;
+
+vector<int> v; 
+while(n) 
+{ v.push_back(n % 10); //use of vector
+n /= 10;
+}
+for(int i=0;i<v.size();i++)
+{
+     if(v[i]==0)
+        continue; 
+    else if(orig%v[i]==0)
+    {
+        
+         ctr++;
+    }
+}
+return ctr;
+}
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    int t;
+    cin >> t;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    for (int t_itr = 0; t_itr < t; t_itr++) {
+        int n;
+        cin >> n;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        int result = findDigits(n);
+
+        fout << result << "\n";
+    }
+
+    fout.close();
+
+    return 0;
+}
